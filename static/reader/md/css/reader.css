@@ -1,0 +1,82 @@
+body {
+    background-color: #525659;
+}
+
+#test-editormd-view {
+    height: 100%;
+    width: 850px;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 3em;
+    background-color: #fff;
+    overflow: auto;
+
+    word-break: break-all;
+}
+
+#toggle-toc {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+
+    border: none;
+    width: 3em;
+    height: 3em; 
+    border-radius: 50%;
+
+    background-color: #fff;
+}
+
+#toc {
+    display: none;
+    width: 250px;
+    max-height: 80%;
+    position: fixed;
+    bottom: 7em;
+    right: 3em;
+    overflow: auto;
+    z-index: 100;
+    padding: 1em; 
+    
+    background: #fff;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    opacity: 0.92;
+}
+
+#custom-toc-container {
+    padding-left: 0;
+    padding-right: 1em;
+    padding-bottom: 2em;
+}
+
+.markdown-toc-list {
+    padding-left: 1em;
+}
+
+#loading {
+
+}
+
+.loading {
+    width: 6em;
+}
+
+.btn-shadow {
+    box-shadow: 0.5px 0.5px 3px 1px #555;
+}
+
+/* 去除 chrome 浏览器的 button 激活时的蓝色外边框 */
+button:focus {outline: none;}
+textarea:focus {outline: none;}
+
+ul {
+    padding-left: 1em;
+}
+
+#toc a {
+    color: #555;
+}

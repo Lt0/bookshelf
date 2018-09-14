@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?dxiho1');
+  src:  url('fonts/icomoon.eot?dxiho1#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?dxiho1') format('truetype'),
+    url('fonts/icomoon.woff?dxiho1') format('woff'),
+    url('fonts/icomoon.svg?dxiho1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-blank .path1:before {
+  content: "\e900";
+  color: rgb(204, 204, 204);
+}
+.icon-blank .path2:before {
+  content: "\e901";
+  margin-left: -0.75em;
+  color: rgb(204, 204, 204);
+}
+.icon-blank .path3:before {
+  content: "\e902";
+  margin-left: -0.75em;
+  color: rgb(153, 153, 153);
+}
+.icon-blank .path4:before {
+  content: "\e903";
+  margin-left: -0.75em;
+  color: rgb(153, 153, 153);
+}
+.icon-epub .path1:before {
+  content: "\e904";
+  color: rgb(153, 102, 51);
+}
+.icon-epub .path2:before {
+  content: "\e905";
+  margin-left: -0.75em;
+  color: rgb(153, 102, 51);
+}
+.icon-epub .path3:before {
+  content: "\e906";
+  margin-left: -0.75em;
+  color: rgb(255, 255, 255);
+}
+.icon-epub .path4:before {
+  content: "\e907";
+  margin-left: -0.75em;
+  color: rgb(153, 102, 51);
+}
+.icon-folder .path1:before {
+  content: "\e908";
+  color: rgb(239, 206, 74);
+}
+.icon-folder .path2:before {
+  content: "\e90a";
+  margin-left: -1.142578125em;
+  color: rgb(235, 186, 22);
+}
+.icon-pdf .path1:before {
+  content: "\e90b";
+  color: rgb(193, 30, 7);
+}
+.icon-pdf .path2:before {
+  content: "\e90c";
+  margin-left: -0.75em;
+  color: rgb(193, 30, 7);
+}
+.icon-pdf .path3:before {
+  content: "\e90d";
+  margin-left: -0.75em;
+  color: rgb(255, 255, 255);
+}
+.icon-pdf .path4:before {
+  content: "\e90e";
+  margin-left: -0.75em;
+  color: rgb(193, 30, 7);
+}
+.icon-txt .path1:before {
+  content: "\e90f";
+  color: rgb(102, 102, 102);
+}
+.icon-txt .path2:before {
+  content: "\e910";
+  margin-left: -0.75em;
+  color: rgb(102, 102, 102);
+}
+.icon-txt .path3:before {
+  content: "\e911";
+  margin-left: -0.75em;
+  color: rgb(255, 255, 255);
+}
+.icon-txt .path4:before {
+  content: "\e912";
+  margin-left: -0.75em;
+  color: rgb(102, 102, 102);
+}
+.icon-book-open:before {
+  content: "\e00b";
+}
+.icon-refresh:before {
+  content: "\e05a";
+}
+.icon-book2:before {
+  content: "\e913";
+}
+.icon-book-bookmark:before {
+  content: "\e914";
+}
+.icon-search:before {
+  content: "\e915";
+}
+.icon-spinner12:before {
+  content: "\e909";
+}
+.icon-book:before {
+  content: "\e91f";
+}
+.icon-libreoffice:before {
+  content: "\eae3";
+}
+.icon-arrow_back:before {
+  content: "\e5c4";
+}
+.icon-arrow_forward:before {
+  content: "\e5c8";
+}
+.icon-arrow_upward:before {
+  content: "\e5d8";
+}
+.icon-autorenew:before {
+  content: "\e863";
+}
+.icon-dehaze:before {
+  content: "\e3c7";
+}
+.icon-menu:before {
+  content: "\e5d2";
+}
+.icon-search2:before {
+  content: "\e8b6";
+}
+.icon-book3:before {
+  content: "\e916";
+}

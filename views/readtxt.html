@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="static/bootstrap/css/bootstrap.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{.file}}</title>
+    <link rel="stylesheet" href="/static/css/readtxt.css">
+</head>
+<body style="background-color: #525659">
+    <div>
+        <header>
+            <button type="button" id="toggle-chapter">chapters</button>
+            <button type="button" id="toggle-file-info">info</button>
+            <a href="{{.downloadPath}}" download={{.downloadName}} id="downFile">下载</a>
+        </header>
+    </div>
+    <div>
+        <div id="chapters">
+            <pre>
+ {{str2html .chapters}}
+            </pre>
+        </div>
+
+        <div id="bookContent">
+            {{str2html .book}}
+        </div>
+
+        <div id="file-info">
+<pre id="file-info-pre">
+文件: {{.file}}
+大小: {{.fileSize}}
+字数: {{.fileWords}}
+章节: {{.fileChapter}}
+修改时间: {{.fileModTime}}
+文件路径: {{.filePath}}
+</pre>
+        </div>
+
+    </div>
+</body>
+<script charset="utf-8" src="/static/js/readtxt.js"></script>
+</html>

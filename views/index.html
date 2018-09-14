@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>bookshelf</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="static/jquery-ui/jquery-ui.min.css" type="text/css">
+  <script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="static/jquery-ui/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <script type="text/javascript" src="static/ztree/js/jquery.ztree.all.min.js"></script>
+  <script type="text/javascript" src="static/vue/vue.js"></script>
+  <!--<script type="text/javascript" src="static/vue/vue-resource.js"></script>-->
+  <script type="text/javascript" src="static/js/jquery.qrcode.min.js"></script>
+  <script type="text/javascript" src="static/js/smooth-scrollbar.js"></script>
+  <script type="text/javascript" src="static/js/layer/layer-v3.1.1/layer/layer.js"></script>
+  <script type="text/javascript" src="static/js/axios.min.js"></script>
+  <script type="text/javascript" src="static/js/books.js"></script>
+  <link rel="stylesheet" href="static/css/books.css" type="text/css">
+  <!--<link rel="stylesheet" href="static/icon/icommon/style.css" type="text/css">-->
+</head>
+
+<body onload="loadBookTree()">
+	<div id="mainpage">
+		<div class="hdr">
+			<div id="hdr-lctrl">
+				<button id=toggle-tree-btn class="tree-btn btn-lg hdr-icon hidden-xs" onclick="hideLeft()"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span></button>
+				<button id=full-screen-btn class="tree-btn btn-lg hdr-icon visible-xs-inline-block" onclick="fullScreen()"><span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span></button>
+			</div>
+
+			<div id="hdr-title">
+				<p class="text-center header-title" style="cursor:pointer" onclick="showHomeInfo()">Personal BookShelf</p>
+			</div>
+
+			<div id="hdr-rctrl">
+
+				<button id=login-icon class="tree-btn btn-lg hdr-icon" onclick="goLogin()"><span id="login-icon" class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+
+				<div id="user-btn-container" class="dropdown">
+				  <button id=user-btn class="tree-btn btn-lg hdr-icon dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" onclick="clickUser()">
+				    <span id="user-icon" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				  </button>
+				  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-btn">
+				  	<li><a href="#">配置</a></li>
+				    <li onclick="showUserInfo()"><a href="#">用户信息</a></li>
+				    <li><a href="#" onclick="uploadViewTaskShow()">上传列表</a></li>
+				    <li role="separator" class="divider"></li>
+				    <li onclick="defaultUserLogout()"><a href="#">退出登录</a></li>
+				  </ul>
+				</div>
+
+			</div>
+		</div>
+
+		<section>
+			<div id=left class="left-class hidden-xs" onclick="clickLeft(event)">
+				<div id=left-control class="left-control-class">
+					<div id="search-group" class="input-group">
+					    <input id="search-input" type="text" class="form-control" placeholder="在当前目录搜索..." onclick="clickSearchInput()" onkeypress="searchBook(event)">
+					    <span class="input-group-btn">
+					    	<button id="search-btn" class="btn btn-default" type="button" onclick="searchBook(event)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+						</span>
+				    </div>
+					<div id="search-list-box" class="">
+  						<div id="search-loading"><img src="/static/img/common/loading.gif" class="loading"/></div>
+  						<div id="search-tips" class="text-center"></div>
+  						<div id="search-list" class="btn-group-vertical"></div>
+            		</div>
+				</div>
+				<div id=book-tree class="book-tree-class zTreeDemoBackground left">
+				    <ul id="bookTree" class="ztree"></ul>
+				</div>
+			</div>
+
+			<div id=center>
+				<div id=path-div>
+					<ol id=path-nav class="breadcrumb">
+						<li><a></a></li>
+					</ol>
+				</div>
+
+				<!--<div style="padding-left: 1em; border-bottom: 1px solid #f1f1f1;">-->
+				<table id="book-list-details-mode-head" class="table" style="display: none; margin-bottom: 0em">
+					<tr>
+						<td style="width: 45%; overflow:hidden;">文件名</td>
+						<td style="width: 29px; padding-right: 0"></td>
+						<td style="width: 100px">大小</td>
+						<td style="width: 100px">类型</td>
+						<td class="hidden-xs" style="width: 200px">修改日期</td>
+						<td></td>
+					</tr>
+				</table>
+				<!--</div>-->
+				<div id=book-list-container class="common-no-select" onclick="clickBookList(event)" ondragenter="BLCDragEnter(event)" ondragleave="BLCDragLeave(event)" ondrop="BLCDrop(event)" ondragover="BLCDragOver(event)">
+					<div id=book-list class="book-list-class" v-html="booksHTML"></div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+  <div id="BTreeRMenu" class="btn-group-vertical rMenu common-shadow">
+  	<!--<button type="button" class="list-group-item" id="book-tree-rmenu-openwith" onclick="clickOpenWith()">打开</button> -->
+  	<button type="button" class="list-group-item" id="book-tree-rmenu-add" onclick="clickGoAdd()">添加</button>
+  	<button type="button" class="list-group-item" id="book-tree-rmenu-upload" onclick="clickGoUpload()">上传</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-download" onclick="clickDownload()">下载</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-refresh" onclick="clickRefresh()">刷新</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-copy" onclick="clickCopy()">复制</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-move" onclick="clickMove()">剪切</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-paste" onclick="clickPaste()">粘贴</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-remove" onclick="clickRemove()">删除</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-rename" onclick="clickRename()">重命名</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-newdir" onclick="clickNewDir()">新建目录</button>
+    <button type="button" class="list-group-item" id="book-tree-rmenu-details" onclick="clickDetails()">详细信息</button>
+    <!--<button type="button" class="list-group-item" id="book-tree-rmenu-search-pattern-here" onclick="clickSearchPatternHere()">查询字段</button>-->
+  </div>
+
+
+	<!--modal for login page -->
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="loginModalLabel">登录默认账号</h4>
+				</div>
+				<div class="modal-body">
+					<p class="small tip-info">默认账号不需要账号名，密码由服务端的 conf/app.conf 文件 defaultPasswd 条目配置</p>
+					<div class="form-group">
+						<input type="password" class="form-control" id="login-passwd" placeholder="Password" onkeypress="clickLogin(event)">
+					</div>
+					<p id="login-warning" class="warning"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="login-btn" onclick="clickLogin(event)">登录</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div><!-- modal container: login-modal-->
+
+	<!--modal for upload page -->
+	<div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="loginModalLabel">上传<small id="upload-modal-path"></small></h4>
+				</div>
+				<div class="modal-body">					
+					<p class="small tip-info">拖动文件或目录到虚线框内即可加入上传列表</p>
+					<div id="upload-holder" ondragenter="uploadDragEnter(event)" ondragleave="uploadDragLeave(event)" ondrop="uploadDrop(event)" ondragover="uploadDragOver(event)">
+						<div>
+							<input id="upload-file-elem" type="file" style="display:none" onchange="uploadAddFile()">
+							<label for="upload-file-elem"><span class="glyphicon glyphicon-open-file btn btn-lg upload-btn" aria-hidden="true" ondragenter="uploadDragEnter(event)"></span></label>
+							<p class="text-center">选择文件<p>
+						</div>
+
+						<div>
+							<input id="upload-dir-elem" type="file" webkitdirectory style="display:none" onchange="uploadAddDir(this)">
+							<label for="upload-dir-elem"><span class="glyphicon glyphicon-folder-open btn btn-lg upload-btn" aria-hidden="true"></span></label>
+							<p class="text-center">选择文件夹<p>
+						</div>
+					</div>
+
+					<p id="login-warning" class="warning"></p>
+					<br>
+					<div id="upload-new-list-title">
+						<div><span style="font-size: 1.2em">上传列表  <small><span id="upload-new-task-list-count" ></small></div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="upload-override-all">
+								覆盖已有文件
+							</label>
+						</div>
+					</div>
+					<div id="upload-new-task-list-container"><div id="upload-new-task-list"></div></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="upload-btn" onclick="uploadClickUploadNewTaskList()">上传</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div><!-- modal container: upload-modal-->
+
+	<!-- 上传任务列表 --> 
+	<div id="upload-task-container">
+		<div id="upload-task-list-container">
+			<div class="upload-task-no text-center">没有上传任务</div>
+			<div id="upload-task-list"></div>
+		</div>
+	</div>
+	<!-- 上传任务列表 --> 
+
+	<div id="book-details-layer">
+			<h4>属性</h4>
+			<hr class="book-hr" />
+			<div id="file-info" class="file-info"></div>
+
+			<br>
+			<div id="book-download" class="book-details-block">
+				<h4>下载</h4>
+				<hr class="book-hr" />
+				<div id="book-download-qrcode" class="book-details-item-block"></div>
+				<span>点击下载: </span><a id="book-download-link"></a>
+			</div>
+
+			<br>
+			<div id="book-open" class="book-details-block">
+				<h4>直接打开</h4>
+				<hr class="book-hr" />
+				<div id="book-open-qrcode" class="book-details-item-block"></div>
+				<span>点击打开: </span><a id="book-open-link" target="_blank"></a>
+			</div>
+			<br>
+		<!--
+			<br>
+			<h4>描述</h4>
+			<hr class="book-hr" />
+			<p id=book-description class="text-left"></p>
+			<div id=book-description-alert class="alert alert-danger" role="alert"></div>
+		-->
+	</div>
+	<div id="dir-details-layer" class="common-layer" style="display: none">
+		<h4>属性</h4>
+		<hr class="book-hr" />
+		<div id="dir-info" class="file-info"></div>
+	</div>
+
+</body>
+
+
+</html>

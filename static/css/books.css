@@ -1,0 +1,587 @@
+#mainpage {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
+
+
+.hdr {
+	height: 64px;
+	display: flex;
+	background-color: #e3e3e3;
+
+	padding: 1em 1em 0 1em;
+}
+.hdr-icon {
+	color: #777777;
+	background-color: transparent;
+	border: none;
+}
+.hdr-icon:hover {
+	color: #333333;
+}
+.hdr-icon:active {
+	border: none;
+}
+.hdr-icon:visited {
+	border: none;
+}
+#toggle-tree-btn {
+	margin: 0.4em 0em 0em 1em;
+	padding: 0 0 0 0;
+}
+#hdr-title {
+	flex-grow: 1;
+}
+.header-title {
+	color: #777777;
+	font-size: 24px;
+}
+#user-btn-container {
+	display: none;
+}
+.home-info-modal-container {
+	display: flex;
+	justify-content: center;
+
+	padding: 1em 1em 1em 1em;
+}
+.home-info-modal {
+	display: flex;
+	flex-wrap: nowrap;
+}
+.home-info-modal-info {
+	padding: 0em 0em 0em 1em;
+}
+
+section {
+	display: flex;
+	flex-grow: 1;
+
+	max-height: calc(100% - 64px);
+}
+
+.left-class {
+	order: -1;
+	flex-shrink: 0;
+	width: 20em;
+	min-width: 10em;
+	max-width: 32em;
+	min-height: 100%;
+	max-height: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	overflow: hidden;
+
+	border-right: 1px solid #f1f1f1;
+}
+.left-control-class {
+	z-index: 50;
+	padding: 0.8em 1em 0.8em 1em;
+	height: 48px;
+}
+#search-list-box{
+	display: none;
+	flex-direction: column;
+	max-height: 80vh;
+	overflow-y: auto;
+	border: 1px solid #d0d0d0;
+	border-radius: 3px;
+	box-shadow: 3px 3px 5px #888888;
+	background-color: white;
+}
+#search-loading {
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+}
+#search-tips {
+	padding: 0 1em 1em 1em;
+	font-size: 1em;
+}
+#search-list {
+	display: flex;
+	flex-direction: column;
+}
+.search-item {
+	word-break: break-all;
+	cursor: pointer;
+}
+.book-tree-class {
+	z-index: 25;
+	max-height: 100%;
+	overflow-y: auto;
+	padding: 0em 0em 0em 0em;
+}
+
+#center {
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+}
+#path-div ol {
+	border-radius: 0px;
+}
+#path-nav {
+	margin: 0em 0em 0em 0em;
+}
+.nav-item {
+	margin: 0em 0em 0em 0em;
+	padding: 0em 0em 0em 0em;
+}
+.nav-item:hover {
+	text-decoration: none;
+}
+.go-hist-class {
+	margin: 0em 1em 0em 0em;
+}
+.go-hist-item {
+	padding: 0em 0.8em 0em 0.8em;
+}
+.go-hist-item-active {
+	color: #424242;
+}
+.go-hist-item-active:hover {
+	color: black;
+}
+.go-hist-item-inactive {
+	color: #ababab;
+}
+#book-list-container {
+	width: 100%;
+	height: 100%;
+	border: solid 1px transparent;
+}
+.book-list-class {
+	padding: 1em 0em 1em 1em;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+.book-list-details-icon {
+	height: 20px;
+}
+#book-list table {
+	margin: 0em 0em 3em 0em;
+	padding: 0em 0em 0em 0em;
+	height: 100%;
+}
+#book-list tr:hover {
+	background-color: #e5f3ff;
+}
+#book-list td {
+	border: 1px solid transparent;
+	vertical-align: middle;
+}
+#book-list-details-mode-head td {
+	border: 0px solid transparent;
+}
+.book {
+	min-width: 85px;
+	max-width: 85px;
+	margin: 0em 0.2em 0em 0.2em;
+	padding: 0.2em 0em 0.2em 0em;
+}
+.BLInnerBox{
+	padding-top: 0.2em;
+	border: 1px solid transparent;
+	cursor: default;
+}
+.BLInnerBox:hover {
+	background-color: #e5f3ff;
+}
+.book-list-icon {
+	width: 60px;
+	height: 60px;
+	padding-bottom: 3px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.icon-size {
+	font-size: 3em;
+}
+.book p {
+	line-height: 1.2em;
+	margin-bottom: 0.2em;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+/*
+.book-title {
+	overflow: hidden;
+	word-wrap: break-word;
+	margin: 0em 0.3em 0em 0.3em;
+}
+*/
+.file-name {
+	border: none;
+	background: none;
+	width: 100%;
+	resize: none;
+	overflow: hidden;
+	cursor: default;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+.file-name-details {
+	width: 100%;
+	border: none;
+	background: none;
+	resize: none;
+	overflow: hidden;
+	cursor: default;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	overflow : hidden;
+	text-overflow: ellipsis;
+}
+.file-name:active {
+	cursor: default;
+}
+.file-name:hover {
+	cursor: default;
+}
+.book-hr {
+	margin: 0px 0px 0px 0px;
+}
+
+
+#book-details-layer {
+	display: none;
+	flex-direction: column;
+	padding: 0em 1em 1em 1.5em;
+	height: 458px;
+
+	overflow: auto;
+}
+.book-details-block {
+	margin: 1em 0em 1em 0em;
+}
+.book-details-item-block {
+	margin: 1em 0em 1em 0em;
+}
+.file-info{
+	display: static;
+	margin: 1em 0em 1em 0em;
+}
+
+.textLoading{
+	width: 1.6em;
+	height: 1.6em;
+}
+
+.loading {
+	width: 3em;
+	height: 3em;
+}
+
+.warning {
+	color: red;
+}
+
+.tip-info {
+	color: grey;
+}
+
+div#BTreeRMenu {position:absolute; display: none; top:0; z-index: 75; width: 10em;}
+.list-group-item {
+	border: 0px;
+}
+
+.rMenu {
+}
+
+/* uploader */
+#upload-holder {
+	border: 3px dashed #ccc;
+	width: 100%;
+	height: 150px;
+	margin: auto;
+
+	display: flex;
+	justify-content: space-around;
+}
+.upload-btn {
+	color: #888888;
+	font-size: 60px;
+	margin-top: 10px;
+	margin-bottom: -20px;
+}
+.upload-btn:hover {
+	color: #777777;
+}
+.upload-btn:active {
+	box-shadow: none;
+	color: #666666;
+}
+#upload-new-list-title {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+#upload-new-task-list-count {
+	color: gray;
+}
+/*选择上传文件界面的文件列表容器*/
+#upload-new-task-list-container {
+	width: 100%;
+	max-height: 350px;
+	overflow-y: auto;
+}
+.upload-new-list-item {
+	word-break: break-all;
+
+	display: flex;
+	flex-wrap: nowrap
+}
+#upload-ctrl-btn-dropdown-ul {
+	z-index: 10000000;
+}
+.upload-task-item-right {
+	display: flex;
+	flex-wrap: nowrap
+
+	word-break: none;
+	white-space: nowrap;
+	
+	padding-left: 1em;
+}
+#upload-holder.hover {
+	border: 10px dashed #0c0;
+}
+#upload-task-container {
+	display: none;
+
+	color: #555555;
+	background-color: white;
+}
+#upload-task-hdr {
+	display: flex;
+	justify-content: space-between;
+	
+}
+#upload-ctrl-btn-container {
+}
+#upload-task-info-container {
+	flex-grow: 1;
+}
+#upload-task-info {
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+}
+#upload-task-info div {
+	padding-right: 1em;
+}
+#upload-task-ctrl {
+	display: flex;
+}
+#upload-task-list-container{
+	overflow-y: auto;
+	height: 477px;
+}
+.upload-task-no {
+	color: gray;
+	padding: 2em 0em 2em 0em;
+}
+#upload-task-list {
+	position:absolute; 
+	top:0;
+	width: 100%;
+}
+.upload-task-item {
+	display: flex;
+	justify-content: space-between;
+
+	padding: 0.5em 1em 0.5em 1em;
+	word-break: break-all;
+	background-color: white;
+}
+.upload-task-item:hover {
+	background-color: #f5f5f5;
+}
+.upload-task-item-index {
+	padding-right: 0.5em;
+
+	display: flex;
+	align-items: center;
+
+	white-space: nowrap;
+}
+.upload-task-item-container {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 0 0.3em 0 0.3em;
+	
+	overflow-x: hidden;
+	word-break: keep-all;
+	word-wrap: normal;
+	white-space: nowrap;
+}
+.upload-task-item-titleBar {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
+.upload-task-item-title {
+	flex-grow: 1;
+}
+.upload-task-item-pathInfo {
+	color: gray;
+}
+.upload-task-item-btn {
+	
+}
+.upload-task-item-ctrlInfo {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	color: gray;
+}
+.upload-task-item-ctrlInfo-item {
+	width: 33.33%;
+}
+.upload-task-item-common {
+	padding-left: 1em;
+}
+.uploadProgress {
+	margin: 2px 0px 2px 0px;
+}
+.upload-task-item-err {
+	color: red;
+}
+/* common sytle */
+
+/* 去除 chrome 浏览器的 button 激活时的蓝色外边框 */
+button:focus {outline: none;}
+textarea:focus {outline: none;}
+
+/* 阴影 */
+.common-shadow {
+	box-shadow: 3px 3px 5px 1px #cccccc;
+}
+
+.common-btn {
+	border: none;
+	border-radius: 0px;
+	background-color: transparent;
+	padding: 0.3em 0.8em 0.3em 0.8em;
+}
+.common-btn:hover {
+	background-color: #f5f5f5;
+}
+.common-btn:active {
+	background-color: #eeeeee;
+}
+
+.common-hr {
+	margin: 0px 0px 0px 0px;
+}
+
+.common-layer {
+	display: none;
+	padding: 1em 1.5em 1em 1.5em;
+	overflow: auto;
+}
+
+.common-no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.common-word-break-all {
+	white-space: wrap;
+	word-break: break-all;
+	break-word: break-word;
+}
+
+
+/*full screen css*/
+:-webkit-full-screen {
+	/* properties */
+	background-color: white;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;	
+}
+
+:-moz-full-screen {
+	/* properties */
+	background-color: white;
+}
+
+:-ms-fullscreen {
+	/* properties */
+	background-color: white;
+}
+
+:full-screen { /*pre-spec */
+	background-color: white;
+	/* properties */
+}
+
+:fullscreen { /* spec */
+	background-color: white;
+	/* properties */
+}
+
+/* deeper elements */
+:-webkit-full-screen video {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#left {
+	background-color: white;
+}
+#center {
+	background-color: white;
+}

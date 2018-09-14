@@ -1,0 +1,10 @@
+package: bookshelf
+ignore:
+- bookshell/routers
+import:
+- package: github.com/astaxie/beego
+  version: v1.9.2
+  subpackages:
+  - context/param
+- package: github.com/beego/bee
+  version: ^1.8.3
