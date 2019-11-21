@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>bookshelf</title>
+  <link rel="shortcut icon" href="static/favicon.png" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css" type="text/css">
@@ -149,7 +150,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="loginModalLabel">上传<small id="upload-modal-path"></small></h4>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<p class="small tip-info">拖动文件或目录到虚线框内即可加入上传列表</p>
 					<div id="upload-holder" ondragenter="uploadDragEnter(event)" ondragleave="uploadDragLeave(event)" ondrop="uploadDrop(event)" ondragover="uploadDragOver(event)">
 						<div>
@@ -186,14 +187,14 @@
 		</div><!-- /.modal -->
 	</div><!-- modal container: upload-modal-->
 
-	<!-- 上传任务列表 --> 
+	<!-- 上传任务列表 -->
 	<div id="upload-task-container">
 		<div id="upload-task-list-container">
 			<div class="upload-task-no text-center">没有上传任务</div>
 			<div id="upload-task-list"></div>
 		</div>
 	</div>
-	<!-- 上传任务列表 --> 
+	<!-- 上传任务列表 -->
 
 	<div id="book-details-layer">
 			<h4>属性</h4>
