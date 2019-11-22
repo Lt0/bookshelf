@@ -30,6 +30,28 @@ http://athena-bookshelf.com
 5. gitbook: 使用 gitbook 自带的阅读器
 6. html: 直接在浏览器打开
 
+## 运行
+bookshelf 默认提供 docker 镜像，可以直接运行:
+```
+docker run -d --restart=always --name=bookshelf -p <host_port>:80 --env password=<admin_password> -v <host_books_dir>:/opt/bookshelf/books -it lightimehpq/bookshelf
+```
+
+说明：
+1. <host_port> 表示实际的访问端口
+2. <admin_password> 表示书架的登陆密码，如果不设置，则默认为 admin
+3. <host_books_dir> 表示要挂载到物理机的目录，所有的书籍都保存在这个目录
+
+### 示例
+```
+docker run -d --restart=always --name=bookshelf -p 8080:80 --env password=admin -v /books:/opt/bookshelf/books -it lightimehpq/bookshelf
+```
+
+
+### 查看帮助信息
+```
+docker run --rm lightimehpq/bookshelf -h
+```
+
 
 ## 预览
 <p align="center">
