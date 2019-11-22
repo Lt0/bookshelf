@@ -33,6 +33,11 @@ http://athena-bookshelf.com
 ## 运行
 bookshelf 默认提供 docker 镜像，可以直接运行:
 ```
+docker run -p 80:80 -it lightimehpq/bookshelf
+```
+
+### 以服务的形式运行
+```
 docker run -d --restart=always --name=bookshelf -p <host_port>:80 --env password=<admin_password> -v <host_books_dir>:/opt/bookshelf/books -it lightimehpq/bookshelf
 ```
 
@@ -50,6 +55,14 @@ docker run -d --restart=always --name=bookshelf -p 8080:80 --env password=admin 
 ### 查看帮助信息
 ```
 docker run --rm lightimehpq/bookshelf -h
+```
+
+### arm64 架构
+如果要在树莓派等 arm64 架构的开发板上运行, 可以使用 lightimehpq/bookshelf-arm64 镜像, 只需要在镜像名后添加 -arm64 后缀即可, 其它使用方式完全相同: 
+```
+docker run -p 80:80 -it lightimehpq/bookshelf-arm64
+docker run -d --restart=always --name=bookshelf -p <host_port>:80 --env password=<admin_password> -v <host_books_dir>:/opt/bookshelf/books -it lightimehpq/bookshelf-arm64
+docker run --rm lightimehpq/bookshelf-arm64 -h
 ```
 
 
