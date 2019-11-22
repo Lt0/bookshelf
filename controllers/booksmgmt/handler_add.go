@@ -109,10 +109,10 @@ func (p *BooksMgmtAdd) add() {
 func downloadNormalBook(path, name, url string) error {
 	var args string
 	if name == "" {
-		args = fmt.Sprintf("/usr/bin/wget --restrict-file-name=nocontrol -P \"%s\" \"%s\"", path, url)
+		args = fmt.Sprintf("/usr/bin/wget --restrict-file-names=nocontrol -P \"%s\" \"%s\"", path, url)
 	} else {
 		savePath := path + "/" + name
-		args = fmt.Sprintf("/usr/bin/wget --restrict-file-name=nocontrol -O \"%s\" \"%s\"", savePath, url)
+		args = fmt.Sprintf("/usr/bin/wget --restrict-file-names=nocontrol -O \"%s\" \"%s\"", savePath, url)
 	}
 
 	fmt.Println("args", args)
